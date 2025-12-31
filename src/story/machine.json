@@ -1,0 +1,599 @@
+{
+  "id": "newyear-2026-terminal",
+  "version": "1.0.0",
+  "context": {
+    "vars": {
+      "name": "",
+      "attitude": ""
+    }
+  },
+  "start": "BOOT",
+  "states": [
+    {
+      "id": "BOOT",
+      "type": "sequence",
+      "lines": [
+        { "text": "Iniciando sistema… 🚀", "delayMs": 0 },
+        { "text": "Cargando interfaz navideña…", "delayMs": 0 },
+        { "text": "HECHO!!", "delayMs": 0 },
+        { "text": "Bienvenido!! 🎉", "delayMs": 0 },
+        { "text": "Esto parece un poco matrix.", "delayMs": 0 },
+        { "text": "No lo es.", "delayMs": 0 },
+        { "text": "Por desgracia…", "delayMs": 0 },
+        { "text": "Pero fingiremos que sí.", "delayMs": 0 }
+      ],
+      "to": "ASK_ATTITUDE"
+    },
+    {
+      "id": "ASK_ATTITUDE",
+      "type": "choice",
+      "prompt": "Para continuar necesitamos que tomes una decisión importante.\nNo porque sea importante.\nSino porque algo tendrás que hacer.\n\n¿Cómo afrontas normalmente las cosas nuevas?",
+      "choices": [
+        {
+          "id": "eager",
+          "label": "Con ganas",
+          "actions": [
+            { "type": "setVar", "key": "attitude", "value": "Con ganas" }
+          ],
+          "to": "ATTITUDE_EAGER"
+        },
+        {
+          "id": "fear",
+          "label": "Con miedo",
+          "actions": [
+            { "type": "setVar", "key": "attitude", "value": "Con miedo" }
+          ],
+          "to": "ATTITUDE_FEAR"
+        },
+        {
+          "id": "improvise",
+          "label": "Improvisando",
+          "actions": [
+            { "type": "setVar", "key": "attitude", "value": "Improvisando" }
+          ],
+          "to": "ATTITUDE_IMPROVISE"
+        },
+        {
+          "id": "confused",
+          "label": "¿Qué?",
+          "to": "ATTITUDE_CONFUSED"
+        }
+      ]
+    },
+
+    {
+      "id": "ATTITUDE_CONFUSED",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Pregunta legítima.",
+          "delayMs": 0
+        },
+        {
+          "text": "Espera, ¿en serio?",
+          "delayMs": 0
+        },
+        {
+          "text": "Acabo de hacer una pregunta perfectamente clara.",
+          "delayMs": 0
+        },
+        {
+          "text": "¿Cómo afrontas las cosas nuevas?",
+          "delayMs": 0
+        },
+        {
+          "text": "Tres opciones. Sencillo.",
+          "delayMs": 0
+        },
+        {
+          "text": "Necesitas un croquis?.",
+          "delayMs": 0
+        },
+        {
+          "text": "Mi pregunta te ha causado una crisis existencial?.",
+          "delayMs": 0
+        },
+        {
+          "text": "Está bien, sucede.",
+          "delayMs": 0
+        },
+        {
+          "text": "O tal vez estabas pensando en algo más importante.",
+          "delayMs": 0
+        },
+        {
+          "text": "Como qué desayunar.",
+          "delayMs": 0
+        },
+        {
+          "text": "O si ese mensaje de Whatsapp merece respuesta.",
+          "delayMs": 0
+        },
+        {
+          "text": "Muy comprensible.",
+          "delayMs": 0
+        },
+        {
+          "text": "Te voy a dar la oportunidad de redimirte.",
+          "delayMs": 0
+        },
+        {
+          "text": "No me des las gracias (bueno si).",
+          "delayMs": 0
+        },
+        {
+          "text": "Fijate bien en los botones.",
+          "delayMs": 0
+        },
+        {
+          "text": "Intenta leerlos esta vez.",
+          "delayMs": 0
+        },
+        {
+          "text": "Con atención.",
+          "delayMs": 0
+        },
+        {
+          "text": "Leeeeentamente.",
+          "delayMs": 0
+        },
+        {
+          "text": "Vale?.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ASK_ATTITUDE"
+    },
+
+    {
+      "id": "ATTITUDE_EAGER",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Has elegido: CON GANAS.\nClásico.\nDurará poco.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ATTITUDE_APPLY"
+    },
+    {
+      "id": "ATTITUDE_FEAR",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Has elegido: CON MIEDO.\nHonesto.\nPoco práctico.\nPero honesto.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ATTITUDE_APPLY"
+    },
+    {
+      "id": "ATTITUDE_IMPROVISE",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Has elegido: IMPROVISAR.\nExcelente.\nEste sistema odia eso.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ATTITUDE_APPLY"
+    },
+
+    {
+      "id": "ATTITUDE_APPLY",
+      "type": "sequence",
+      "lines": [
+        { "text": "Aplicando decisión…", "delayMs": 0 },
+        {
+          "text": "ADVERTENCIA:\nLa decisión tomada tendrá consecuencias.\nNo sabemos cuáles.\nPero las tendrá.",
+          "delayMs": 0
+        },
+        {
+          "text": "Compilando código 2026…",
+          "delayMs": 0
+        },
+        {
+          "text": "…",
+          "delayMs": 1000
+        },
+        {
+          "text": "…",
+          "delayMs": 800
+        },
+        {
+          "text": "…",
+          "delayMs": 600
+        },
+        {
+          "text": "Ok, algo se ha roto.",
+          "delayMs": 0
+        }
+      ],
+      "to": "FAKE_ERROR"
+    },
+
+    {
+      "id": "FAKE_ERROR",
+      "type": "sequence",
+      "lines": [
+        { "text": "Continuando…", "delayMs": 0 },
+        { "text": "⚠️ ERROR ⚠️", "delayMs": 0 },
+        { "text": "", "delayMs": 0 },
+        { "text": "Tranquilo.\nNo ha explitado nada.", "delayMs": 0 },
+        { "text": "(Apagando incendio).", "delayMs": 0 },
+        {
+          "text": "Motivo del error:\nExpectativas poco realistas.",
+          "delayMs": 0
+        },
+        { "text": "Esto pasa muchísimo.\nNo solo aquí.", "delayMs": 0 },
+        { "text": "Opciones disponibles:", "delayMs": 0 }
+      ],
+      "to": "DEBUG_CHOICE"
+    },
+
+    {
+      "id": "DEBUG_CHOICE",
+      "type": "choice",
+      "prompt": "",
+      "choices": [
+        { "id": "fix", "label": "Arreglarlo", "to": "DEBUG_FIX" },
+        {
+          "id": "ignore",
+          "label": "Ignorar el problema",
+          "to": "DEBUG_IGNORE"
+        },
+        {
+          "id": "blame",
+          "label": "Echarle la culpa a alguien",
+          "to": "DEBUG_BLAME"
+        },
+        {
+          "id": "restart",
+          "label": "Reiniciar y rezar",
+          "to": "DEBUG_RESTART"
+        }
+      ]
+    },
+
+    {
+      "id": "DEBUG_FIX",
+      "type": "sequence",
+      "lines": [
+        { "text": "Intentando arreglarlo…", "delayMs": 0 },
+        {
+          "text": "Listo.\nNo hemos hecho nada.\nPero ahora funciona.\nNo preguntes…",
+          "delayMs": 0
+        }
+      ],
+      "to": "ITERATION"
+    },
+
+    {
+      "id": "DEBUG_IGNORE",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Ignorando el problema…\nComo un buen profesional.",
+          "delayMs": 0
+        },
+        {
+          "text": "Listo.\nNo hemos hecho nada.\nPero ahora funciona.\nNo preguntes…",
+          "delayMs": 0
+        }
+      ],
+      "to": "ITERATION"
+    },
+
+    {
+      "id": "DEBUG_BLAME",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Culpando a:\n- Internet\n- Trump\n- El gato\n- Mercurio retrógrado",
+          "delayMs": 0
+        },
+        {
+          "text": "Sorprendentemente… ¡funciona!",
+          "delayMs": 0
+        },
+        {
+          "text": "El poder de la culpa ajena.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ITERATION"
+    },
+
+    {
+      "id": "DEBUG_RESTART",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Reiniciando…",
+          "delayMs": 0
+        },
+        {
+          "text": "*sonido de reinicio*",
+          "delayMs": 0
+        },
+        {
+          "text": "El error desapareció.",
+          "delayMs": 0
+        },
+        {
+          "text": "No sabemos por qué.",
+          "delayMs": 0
+        },
+        {
+          "text": "Nadie lo sabe.",
+          "delayMs": 0
+        },
+        {
+          "text": "MAGIC!!.",
+          "delayMs": 0
+        }
+      ],
+      "to": "ITERATION"
+    },
+
+    {
+      "id": "ITERATION",
+      "type": "sequence",
+      "lines": [
+        { "text": "Ajustando parámetros internos…", "delayMs": 0 },
+        { "text": "No funciona…", "delayMs": 0 },
+        { "text": "…", "delayMs": 0 },
+        { "text": "Casi!!.", "delayMs": 0 },
+        { "text": "…", "delayMs": 0 },
+        { "text": "No funciona…", "delayMs": 0 },
+        { "text": "…", "delayMs": 0 },
+        { "text": "EUREKA!!.", "delayMs": 0 },
+        {
+          "text": "Vale.\nAsí se queda…\nQue a este paso nos dan las uvas",
+          "delayMs": 0
+        },
+        {
+          "text": "Esto que acabas de vivir se llama:\n'Probar cosas hasta que dejan de fallar.'",
+          "delayMs": 0
+        },
+        { "text": "Sí.\nEso es básicamente programar.", "delayMs": 0 },
+        { "text": "Y es aplicable a todo.", "delayMs": 0 },
+        {
+          "text": "Intentar algo.\nSi funciona, bien.\nSi no, intenta otra cosa.",
+          "delayMs": 0
+        },
+        {
+          "text": "Llorar y llamar a tu mamá también es una opción.",
+          "delayMs": 0
+        },
+        { "text": "Así hemos llegado hasta aquí.", "delayMs": 0 },
+        { "text": "Pero sin que llores y llames a tu madre…", "delayMs": 0 }
+      ],
+      "to": "BUILD"
+    },
+
+    {
+      "id": "BUILD",
+      "type": "sequence",
+      "lines": [
+        { "text": "Preparando build de 2026…", "delayMs": 0 },
+        { "text": "Descargando 2026.iso…", "delayMs": 0 },
+        { "text": "No, espera, demasiado técnico.", "delayMs": 0 },
+        { "text": "…", "delayMs": 0 },
+        { "text": "Compilando esperanzas…", "delayMs": 0 },
+        { "text": "Demasiado My Little Pony", "delayMs": 0 },
+        { "text": "…", "delayMs": 0 },
+        { "text": "Mezclando con un poco de caos…", "delayMs": 0 },
+        { "text": "Y gatos, muchos gatos…", "delayMs": 0 },
+        {
+          "text": "Resumen de configuración:\n\nDecisiones: cuestionables\nErrores: demasiados, esto me costará meses de terapia.\nConfianza: la misma que te dan las frases de Mister Wonderful.\nSarcasmo: Nivel Dios.",
+          "delayMs": 0
+        },
+        { "text": "¿Es perfecto?\nObviamente, lo he hecho yo.", "delayMs": 0 },
+        { "text": "¿Funciona?\nMás o menos.", "delayMs": 0 },
+        {
+          "text": "¿Es mejor que nada?\nMejor es ganar la loteria pero compramos pulpo.",
+          "delayMs": 0
+        }
+      ],
+      "to": "DEPLOY"
+    },
+
+    {
+      "id": "DEPLOY",
+      "type": "sequence",
+      "lines": [
+        { "text": "Iniciando despliegue de 2026…", "delayMs": 800 },
+        { "text": "3…", "delayMs": 600 },
+        { "text": "2…", "delayMs": 600 },
+        { "text": "1…", "delayMs": 600 },
+        { "text": "…", "delayMs": 1500 },
+        { "text": "Vale, espera.", "delayMs": 0 },
+        { "text": "…", "delayMs": 1500 },
+        {
+          "text": "Estoy instalando el paquete COVID para el año que viene",
+          "delayMs": 1500
+        },
+        { "text": "…", "delayMs": 1500 },
+        { "text": "Casi casi.", "delayMs": 0 },
+        { "text": "…", "delayMs": 1500 },
+        { "text": "AAAAHORA SI.", "delayMs": 0 }
+      ],
+      "to": "FINAL"
+    },
+
+    {
+      "id": "FINAL",
+      "type": "sequence",
+      "lines": [
+        { "text": "🎉 2026 DESPLEGADO CON ÉXITO 🎉", "delayMs": 0 },
+        { "text": "*Inserte sonido de aplausos*", "delayMs": 300 },
+        { "text": "FELICIDADES!!", "delayMs": 0 },
+        { "text": "Has llegado hasta aquí.", "delayMs": 0 },
+        { "text": "No has escrito código.", "delayMs": 0 },
+        { "text": "No has aprendido programación.", "delayMs": 0 },
+        { "text": "No has resuelto problemas importantes.", "delayMs": 0 },
+        {
+          "text": "Pero has hecho exactamente lo mismo que hace un programador:\nProbar, Fallar, Insistir y Seguir adelante.",
+          "delayMs": 0
+        },
+        { "text": "Y SIN CAFÉ!!.", "delayMs": 0 },
+        {
+          "text": "Significa que eres prácticamente un ingeniero.",
+          "delayMs": 0
+        },
+        {
+          "text": "(Recoja su diploma falso al final de esta sesión.)",
+          "delayMs": 0
+        },
+        {
+          "text": "Feliz 2026!!.\nY recuerda!:\nSe aceptan propinas.",
+          "delayMs": 0
+        },
+        { "text": "¿Qué harás ahora?", "delayMs": 0 }
+      ],
+      "to": "POST_FINAL"
+    },
+
+    {
+      "id": "POST_FINAL",
+      "type": "choice",
+      "prompt": "",
+      "choices": [
+        { "id": "repeat", "label": "Repetir (¿por qué no?)", "to": "RESTART" },
+        {
+          "id": "share",
+          "label": "Compartir (haz que otros sufran)",
+          "to": "SHARE"
+        },
+        {
+          "id": "exit",
+          "label": "Salir con la poca dignidad que te queda",
+          "to": "EXIT"
+        },
+        {
+          "id": "doubt",
+          "label": "¿Realmente lo hemos logrado?",
+          "to": "DOUBT"
+        },
+        {
+          "id": "philosophy",
+          "label": "Reflexionar sobre la existencia",
+          "to": "PHILOSOPHY"
+        }
+      ]
+    },
+
+    {
+      "id": "DOUBT",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Pregunta profunda.",
+          "delayMs": 0
+        },
+        {
+          "text": "¿Lo hemos logrado realmente?",
+          "delayMs": 0
+        },
+        {
+          "text": "Mira la pantalla.",
+          "delayMs": 0
+        },
+        {
+          "text": "Sí.",
+          "delayMs": 0
+        },
+        {
+          "text": "Definitivamente lo hemos logrado.",
+          "delayMs": 0
+        },
+        {
+          "text": "A menos que esto sea una simulación.",
+          "delayMs": 0
+        },
+        {
+          "text": "En cuyo caso…lo siento pero ya no me quedan pastillas rojas.",
+          "delayMs": 0
+        }
+      ],
+      "to": "POST_FINAL"
+    },
+
+    {
+      "id": "PHILOSOPHY",
+      "type": "sequence",
+      "lines": [
+        {
+          "text": "Meditando…",
+          "delayMs": 0
+        },
+        {
+          "text": "La vida es como este terminal.",
+          "delayMs": 0
+        },
+        {
+          "text": "Llena de errores.",
+          "delayMs": 0
+        },
+        {
+          "text": "Algunos los entiendes.",
+          "delayMs": 0
+        },
+        {
+          "text": "Muchos no.",
+          "delayMs": 0
+        },
+        {
+          "text": "Pero siempre hay un botón para continuar.",
+          "delayMs": 0
+        },
+        {
+          "text": "(Procedo a potar arcoiris después de escribir esto)",
+          "delayMs": 0
+        }
+      ],
+      "to": "POST_FINAL"
+    },
+
+    {
+      "id": "RESTART",
+      "type": "sequence",
+      "lines": [
+        { "text": "Reiniciando…", "delayMs": 0 },
+        { "text": "Buena decisión.\nNo.\nPero no juzgamos.", "delayMs": 0 }
+      ],
+      "actions": [
+        { "type": "setVar", "key": "name", "value": "" },
+        { "type": "setVar", "key": "attitude", "value": "" }
+      ],
+      "to": "BOOT"
+    },
+
+    {
+      "id": "SHARE",
+      "type": "sequence",
+      "lines": [
+        { "text": "Generando mensaje para compartir…", "delayMs": 0 },
+        {
+          "text": "Copia y pega esto:\n\n\"He desplegado 2026 en una terminal falsa. Me han vacilado sin piedad. 10/10.\"\n\nAhora ve y arrastra a alguien más a esto.",
+          "delayMs": 0
+        }
+      ],
+      "to": "POST_FINAL"
+    },
+
+    {
+      "id": "EXIT",
+      "type": "sequence",
+      "lines": [
+        { "text": "Sesión finalizada.", "delayMs": 0 },
+        {
+          "text": "Has salido dignamente.\nNadie podrá decir lo contrario.\n(Nadie que importe.)",
+          "delayMs": 0
+        }
+      ],
+      "terminal": true
+    }
+  ]
+}
