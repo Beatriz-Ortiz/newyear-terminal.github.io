@@ -249,6 +249,7 @@ export class TerminalStoryRunner {
 
       default: {
         const _exhaustive: never = st;
+        void _exhaustive; // Marca como usado para TypeScript
         throw new Error(`Unsupported state type: ${(st as any).type}`);
       }
     }
@@ -263,7 +264,7 @@ export class TerminalStoryRunner {
 
     for (let idx = 0; idx < state.lines.length; idx++) {
       const line = state.lines[idx];
-      if (this.cancelledToken !== token) return;
+      if (!line || this.cancelledToken !== token) return;
 
       const text = this.interpolate(line.text);
 
@@ -272,7 +273,8 @@ export class TerminalStoryRunner {
         speed: line.speed ?? "normal",
       });
 
-      if (line.delayMs > 0) await this.sleep(line.delayMs, token);
+      if (line.delayMs && line.delayMs > 0)
+        await this.sleep(line.delayMs, token);
     }
 
     if (this.cancelledToken !== token) return;
