@@ -155,7 +155,7 @@ async function typeLine(text: string) {
 
     void autoScrollThrottled();
 
-    const pause = punctuationPause[ch] ?? 0;
+    const pause = (ch ? punctuationPause[ch] : undefined) ?? 0;
     if (pause && i < text.length) await sleep(pause);
   }
 
@@ -273,7 +273,6 @@ const adapter: OutputAdapter = {
 const runner = new TerminalStoryRunner(machine as unknown as Machine, adapter);
 
 // ---------------- UI logic ----------------
-const hasInput = computed(() => !!ui.inputSpec && !ui.terminated);
 const hasChoices = computed(() => ui.choices.length > 0 && !ui.terminated);
 
 function printUserCommand(cmd: string) {
