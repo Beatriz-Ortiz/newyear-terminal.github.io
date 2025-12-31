@@ -17,10 +17,6 @@ import {
   type Machine,
 } from "../../runner/TerminalStoryRunner";
 
-type OutputItem =
-  | { kind: "line"; text: string; active?: boolean }
-  | { kind: "blank" };
-
 // stable id for output items to avoid index-based keys
 let nextOutputId = 0;
 
@@ -29,7 +25,6 @@ type OutputItemWithId =
   | { id: number; kind: "blank" };
 
 const PROMPT = "system@newyear:~$";
-const ENTER_HINT = "Pulsa ENTER para continuar.";
 
 const outputItems = reactive<OutputItemWithId[]>([]);
 const scrollRef = ref<HTMLDivElement | null>(null);
@@ -128,7 +123,7 @@ async function typeLine(text: string) {
   typing.skipRequested = false;
 
   const cps = text.length > 140 ? 18 : 12; // slower overall
-  const punctuationPause: Record<string, number> = {
+  const punctuationPause: Record<string, number | undefined> = {
     ".": 160,
     ",": 110,
     "!": 160,
@@ -291,35 +286,36 @@ function printUserCommand(cmd: string) {
   void autoScrollThrottled();
 }
 
-function handleEnter() {
-  if (ui.terminated) return;
+// Función no utilizada actualmente, comentada para evitar warnings
+// function handleEnter() {
+//   if (ui.terminated) return;
 
-  // Si se está tipando, completar la línea
-  if (typing.isTyping) {
-    typing.skipRequested = true;
-    return;
-  }
+//   // Si se está tipando, completar la línea
+//   if (typing.isTyping) {
+//     typing.skipRequested = true;
+//     return;
+//   }
 
-  // Si hay input, enviar el valor
-  if (hasInput.value) {
-    printUserCommand(ui.inputValue);
-    runner.submit(ui.inputValue);
-    ui.inputValue = "";
-    return;
-  }
+//   // Si hay input, enviar el valor
+//   if (hasInput.value) {
+//     printUserCommand(ui.inputValue);
+//     runner.submit(ui.inputValue);
+//     ui.inputValue = "";
+//     return;
+//   }
 
-  // Si espera ENTER, enviar ENTER
-  if (ui.waitingEnter) {
-    printUserCommand("");
-    runner.enter();
-    return;
-  }
+//   // Si espera ENTER, enviar ENTER
+//   if (ui.waitingEnter) {
+//     printUserCommand("");
+//     runner.enter();
+//     return;
+//   }
 
-  // Si hay choices, ignorar (usar click en botón)
-  if (hasChoices.value) {
-    return;
-  }
-}
+//   // Si hay choices, ignorar (usar click en botón)
+//   if (hasChoices.value) {
+//     return;
+//   }
+// }
 
 function choose(id: string) {
   if (ui.terminated) return;
